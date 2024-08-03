@@ -1,0 +1,14 @@
+.main
+{
+    margin-top: 20%;
+    text-align: center;
+}
+.clock {
+    font-size: 4em;
+    text-shadow: 2px 2px 5px red;
+}
+.date,.day
+{
+    font-size: 30px;
+    color: rebeccapurple;
+}
