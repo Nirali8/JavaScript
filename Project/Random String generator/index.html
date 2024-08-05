@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div ontouchstart="">
+      <button class="button" onclick="displayString()">
+        Click To Generate
+      </button>
+      <h1 class="result">String : <span id="display"></span></h1>
+    </div>
+    <script>
+      function displayString() {
+        let result = "";
+        let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        let len = 52;
+        let counter = Math.ceil(Math.random() * len);
+        while (counter < len) {
+          result += string.charAt(Math.floor(Math.random() * len));
+          counter++;
+        }
+        document.getElementById("display").innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

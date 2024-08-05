@@ -1,66 +1,19 @@
-const out = document.querySelectorAll(".Out");
-const outPut = document.getElementById("output");
-const outPutSmall = document.getElementById("outputSmall");
+input = document.querySelector(".input");
 
-document.getElementById("deleteAll").addEventListener("click", () => {
-  outPut.innerText = "";
-  outPutSmall.innerText = "";
-});
-document.getElementById("deleteLast").addEventListener("click", () => {
-  let text = outPut.innerText;
-  text = text.split("");
-  text.pop();
-  outPut.innerText = text.join("");
-});
+function display(inputdata) {
+  if (input.value == "Error") input.value = "";
+  input.value += inputdata;
+  // console.log(inputdata);
+}
 
-out.forEach((current) => {
-  current.addEventListener("click", () => {
-    outPut.innerHTML += current.innerText;
-  });
-});
+function clearAll() {
+  input.value = "";
+}
 
-let operation = "";
-let symbol = document.querySelectorAll(".symbol");
-
-symbol.forEach((current) => {
-  current.addEventListener("click", () => {
-    outPutSmall.innerText = outPut.innerHTML + current.innerText;
-    outPut.innerText = "";
-    operation = current.innerText;
-  });
-});
-
-document.getElementById("isEqualTo").addEventListener("click", () => {
-  let FirstValue = outPutSmall.innerText;
-  let SecondValue = outPut.innerText;
-  FirstValue = FirstValue.split("");
-  FirstValue.pop();
-  FirstValue = FirstValue.join("");
-
-  if (typeof +FirstValue === "number" && typeof +SecondValue === "number") {
-    FirstValue = +FirstValue;
-    SecondValue = +SecondValue;
-    let ans;
-    switch (operation) {
-      case "+":
-        ans = FirstValue + SecondValue;
-        break;
-      case "-":
-        ans = FirstValue - SecondValue;
-        break;
-      case "/":
-        ans = FirstValue / SecondValue;
-        break;
-      case "*":
-        ans = FirstValue * SecondValue;
-        break;
-      case "%":
-        ans = (FirstValue * SecondValue) / 100;
-    }
-    outPut.innerText = ans;
-    outPutSmall.innerText = "";
-  } else {
-    outPut.innerText = "NaN";
-    outPutSmall.innerText = "";
+function answer() {
+  try {
+    input.value = eval(input.value);
+  } catch (error) {
+    input.value = "Error";
   }
-});
+}

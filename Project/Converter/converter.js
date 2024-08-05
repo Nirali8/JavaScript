@@ -10,3 +10,15 @@
     celsius.value = ((parseFloat(fahrenheit.value) - 32) * 5) / 9;
   };
 }
+{
+  let km = document.getElementById("km");
+  let meter = document.getElementById("meter");
+
+  km.oninput = function () {
+    meter.value = km.value * 1000;
+  };
+
+  meter.oninput = function () {
+    km.value = meter.value / 1000;
+  };
+}
